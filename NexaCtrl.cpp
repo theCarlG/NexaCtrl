@@ -1,6 +1,6 @@
 /**
  * NexaCtrl Library v.02 - Nexa/HomeEasy control library with absolute dim support.
- * Original author of this library is PaulDJohnston (http://jtlog.wordpress.com/)
+ * Original author of this library is James Taylor (http://jtlog.wordpress.com/)
  *
  * Version 02 by Carl Gunnarsson - Refactoring and adding support for absolute dimming
  */
