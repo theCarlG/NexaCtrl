@@ -224,11 +224,7 @@ void itob(bool *bits, unsigned long integer, int length) {
 }
 
 unsigned long power2(int power){    //gives 2 to the (power)
-    unsigned long integer=1;
-    for (int i=0; i<power; i++){
-        integer*=2;
-    }
-    return integer;
+    return (unsigned long) 1 << power;
 }
 
 unsigned long htoi (const char *ptr)
