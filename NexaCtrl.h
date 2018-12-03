@@ -6,8 +6,7 @@
 class NexaCtrl
 {
     public:
-        NexaCtrl(unsigned int tx_pin, unsigned int rx_pin, unsigned int led_pin);
-        NexaCtrl(unsigned int tx_pin, unsigned int rx_pin);
+        NexaCtrl(int tx_pin, int rx_pin=-1, int led_pin=-1);
 
         void DeviceOn(unsigned long controller_id, unsigned int device_id);
         void DeviceOff(unsigned long controller_id, unsigned int device_id);
