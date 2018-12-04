@@ -36,20 +36,21 @@ const int NexaCtrl::kDeviceIdLength = 4;
 const int NexaCtrl::kDimOffset = 32;
 const int NexaCtrl::kDimLength = 4;
 
-NexaCtrl::NexaCtrl(unsigned int tx_pin, unsigned int rx_pin, unsigned int led_pin)
+NexaCtrl::NexaCtrl(int tx_pin, int rx_pin, int led_pin)
 {
     led_pin_ = led_pin;
-    pinMode(led_pin_, OUTPUT);
-
-    NexaCtrl(tx_pin, rx_pin);
-}
-
-NexaCtrl::NexaCtrl(unsigned int tx_pin, unsigned int rx_pin)
-{
     tx_pin_ = tx_pin;
     rx_pin_ = rx_pin;
+
     pinMode(tx_pin_, OUTPUT);
-    pinMode(rx_pin_, INPUT);
+
+    if (led_pin_ >= 0) {
+        pinMode(led_pin_, OUTPUT);
+    }
+
+    if (rx_pin_ >= 0) {
+        pinMode(rx_pin_, INPUT);
+    }
 
     // kLowPulseLength + kDimLength because we need room for dim bits if
     // we want to transmit a dim signal
@@ -162,7 +163,7 @@ void NexaCtrl::Transmit(int pulse_length)
 
     for (transmit_count = 0; transmit_count < 2; transmit_count++)
     {
-        if (led_pin_ > 0) {
+        if (led_pin_ >= 0) {
             digitalWrite(led_pin_, HIGH);
         }
         TransmitLatch1();
@@ -183,7 +184,7 @@ void NexaCtrl::Transmit(int pulse_length)
 
         TransmitLatch2();
 
-        if (led_pin_ > 0) {
+        if (led_pin_ >= 0) {
             digitalWrite(led_pin_, LOW);
         }
 
